@@ -166,7 +166,7 @@ class HetznerCloudState(MachineState[HetznerCloudDefinition]):
             "CharonStateFileHost": socket.gethostname(),
             "CharonStateFileUser": getpass.getuser(),
         }
-        pattern = "^$|(?i)((?=^[a-z0-9])[a-z0-9._-]{0,63}[a-z0-9]$)"
+        pattern = "(?i)^$|((?=^[a-z0-9])[a-z0-9._-]{0,63}[a-z0-9]$)"
         file_name = os.path.basename(self.depl._db.db_file)
         if re.match(pattern, file_name):
             labels["CharonStateFileName"] = file_name
